@@ -75,7 +75,7 @@ def getClues(guess, secretNum):
         if guess[i] == secretNum[i]:
             # A correct digit is in the correct place.
             clues.append('Fermi')
-        elif guess[i] in secretNum[i]:
+        elif guess[i] in secretNum:
             # A correct digit is in the incorrect place.
             clues.append('Pico')
     if len(clues) == 0:
