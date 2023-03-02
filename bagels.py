@@ -1,28 +1,26 @@
 import random
 
-NUM_DIGITS = 3 
-MAX_GUESSES = 10
+NUM_DIGITS = 4
+MAX_GUESSES = 12
 
 
 def main():
-    print('''Bagels, a deductive logic game.
-    By al Sweigart al@inventwithpython.com
-    
-    I am thinking of a {}-digit number with no repeated digits.
-    Try to guess what it is. Here are some clues:
-    When I say:    That means:
-      Pico         One digit is correct but in the wrong position.
-      Fermi        One digit is correct and in the right position.
-      Bagels       No digit is correct.
+    print('''Bagels, un jeu de logique déductive.
 
-For example, if the secret number was 248 and your guess was 843, the
-clues would be Fermi Pico.'''.format(NUM_DIGITS))
+     Je pense à un nombre à {} chiffres sans chiffres répétés.
+     Essayez de deviner ce que c'est. Voici quelques indices :
+     Quand je dis : ça veut dire :
+       Doré Un chiffre est correct mais dans la mauvaise position.
+       Sido Un chiffre est correct et dans la bonne position.
+       Bagels Aucun chiffre n'est correct.
+
+Par exemple, si le numéro secret était 248 et que votre supposition était 843, l'indices seraient Fermi Pico.'''.format(NUM_DIGITS))
 
     while True: # Main game loop.
         # This stores the secret number the player needs to guess:
         secretNum = getSecretNum()
-        print('I have thought up a number.')
-        print('You have {} guesses to get it.'.format(MAX_GUESSES))
+        print("J'ai imaginé un chiffre.")
+        print("Vous avez {} suppositions pour l'obtenir.".format(MAX_GUESSES))
 
         numGuesses = 1
         while numGuesses <= MAX_GUESSES:
@@ -39,18 +37,18 @@ clues would be Fermi Pico.'''.format(NUM_DIGITS))
             if guess == secretNum:
                 break #They're correct, so break out of this loop.
             if numGuesses > MAX_GUESSES:
-                print('You ran out of guesses.')
-                print('The answer was {}.'.format(secretNum))
+                print('Vous avez manqué de suppositions.')
+                print('La réponse était {}.'.format(secretNum))
         
         # Ask player if they want to play again;
-        print('Do you want to play again? (yes or no)')
+        print('Voulez-vous rejouer? (Oui ou non)')
         if not input('> ').lower().startswith('y'):
             break
-    print('Thank for playing!')
+    print("Merci d'avoir joué!")
 
 
 def getSecretNum():
-    """Returns a string made up of NUM_DIGITS unique random digits."""
+    """Renvoie une chaîne composée de NUM_DIGITS chiffres aléatoires uniques."""
 
     numbers = list('0123456789')  # Create a list of digits 0 to 9.
     random.shuffle(numbers)  # Shuffle them into random order.
@@ -63,21 +61,21 @@ def getSecretNum():
 
 
 def getClues(guess, secretNum):
-    """Returns a string with the pico, fermi, bagels clues for a guess
-    and secret number pair."""
+    """Renvoie une chaîne avec les indices doré, sido, bagels pour deviner
+     et la paire de numéros secrets."""
 
     if guess == secretNum:
-        return 'You got it!'
+        return "Vous l'avez trouvé"
 
     clues = []
 
     for i in range(len(guess)):
         if guess[i] == secretNum[i]:
             # A correct digit is in the correct place.
-            clues.append('Fermi')
+            clues.append('Sido')
         elif guess[i] in secretNum:
             # A correct digit is in the incorrect place.
-            clues.append('Pico')
+            clues.append('Doré')
     if len(clues) == 0:
         return 'Bagels' # There are no correct digits all.
     else:
