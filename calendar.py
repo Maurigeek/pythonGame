@@ -87,3 +87,11 @@ def getCalendarFor(year, month):
 
 calText = getCalendarFor(year, month)
 print (calText)
+
+
+# Enregistrer le calendrier dans un fichier texte
+calendarFilename = 'calendar_{}_{}.txt'.format(year, month)
+with open(calendarFilename, 'w') as fileObj:
+    fileObj.write(calText)
+
+print('Enrigister dans ' + calendarFilename)
