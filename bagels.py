@@ -1,6 +1,6 @@
 import random
 
-NUM_DIGITS = 4
+NUM_DIGITS = 4 
 MAX_GUESSES = 12
 
 
