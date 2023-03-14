@@ -14,7 +14,7 @@ def main():
        Sido Un chiffre est correct et dans la bonne position.
        Bagels Aucun chiffre n'est correct.
 
-Par exemple, si le numéro secret était 248 et que votre supposition était 843, l'indices seraient Fermi Pico.'''.format(NUM_DIGITS))
+Par exemple, si le numéro secret était 248 et que votre supposition était 843, l'indices seraient Doré Sido.'''.format(NUM_DIGITS))
 
     while True: # Main game loop.
         # This stores the secret number the player needs to guess:
